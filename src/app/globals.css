@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+/* Definición del tema Deep Dark para Zenith 
+  Usamos la directiva @theme propia de Tailwind v4
+*/
+@theme {
+  --color-zenith-bg: #09090b;
+  --color-zenith-surface: #121215;
+  --color-zenith-accent: #6366f1;
+  --color-zenith-accent-hover: #4f46e5;
+  
+  /* Variables de fuentes (asumiendo que usas Geist de Next.js 15) */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, SFMono-Regular, monospace;
+}
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  body {
+    background-color: var(--color-zenith-bg);
+    color: #f4f4f5; /* zinc-100 */
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Estilos base para scrollbars en el dashboard */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272a; /* zinc-800 */
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #3f3f46; /* zinc-700 */
+  }
+}
+
+/* Clases utilitarias personalizadas que usaremos repetidamente en UI */
+@layer utilities {
+  .glass-panel {
+    @apply bg-zenith-surface border border-white/5 rounded-xl shadow-lg shadow-black/20;
+  }
+  
+  .text-gradient {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-zenith-accent to-indigo-400;
+  }
+}
